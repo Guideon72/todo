@@ -27,6 +27,14 @@ def add_task(app_filepath, choice):
     tasks.append(nTask.capitalize() + "\n")
     write_tl(app_filepath, tasks)
 
+def gui_add(app_filepath, choice):
+    """Takes user choice and adds that task
+     to the file located in app_filepath"""
+    nTask = choice
+    tasks = get_tl(app_filepath)
+# BUG: Does not allow proper names
+    tasks.append(nTask.capitalize() + "\n")
+    write_tl(app_filepath, tasks)
 
 def show_tasks(app_filepath):
     """Displays the current contents of the file in app_filepath,
