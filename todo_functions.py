@@ -27,6 +27,7 @@ def add_task(app_filepath, choice):
     tasks.append(nTask.capitalize() + "\n")
     write_tl(app_filepath, tasks)
 
+#__________custom add function to support PySimpleGUI UI__________
 def gui_add(app_filepath, choice):
     """Takes user choice and adds that task
      to the file located in app_filepath"""
@@ -58,6 +59,16 @@ def edit_task(app_filepath, choice):
             tasks[item[0]-1] = ntask + "\n"
             write_tl(app_filepath, tasks)
 
+#__________Custom edit function to support PySimpleGUI UI__________
+def gui_edit(app_filepath, eTask, nTask):
+    """Allows user to edit the file in app_filepath,
+     based on eTask and nTask supplied by the calling UI"""
+    tasks = get_tl(app_filepath)
+    for item in tasks:
+        if item == eTask:
+            idx = tasks.index(item)
+            tasks[idx] = nTask+'\n'.capitalize()
+    write_tl(app_filepath, tasks)
 
 def complete_task(app_filepath, choice):
     """Allows user to complete and remove a task 
@@ -70,6 +81,18 @@ def complete_task(app_filepath, choice):
     print(F"'{completed}' is done.")
     write_tl(app_filepath, tasks)
 
+#__________Custom complete function to support PySimpleGUI UI__________
+def gui_complete(app_filepath, cTask):
+    """Allows user to complete and remove a task 
+    from the file in app_filepath, 
+    based on index provided by show_tasks
+    """
+    tasks = get_tl(app_filepath)
+    idx = tasks.index(cTask)
+    print(F"In gui_complete; {idx}")
+    completed = tasks.pop(idx).strip("\n")
+    print(F"'{completed}' is done.")
+    write_tl(app_filepath, tasks)
 
 # if __name__ == '__main__':
 #     main()
