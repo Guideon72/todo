@@ -42,6 +42,7 @@ def main():
             case "Complete":
                 tdf.gui_complete(FILEPATH, values["-lb-"][0])
                 app_window["-lb-"].update(values=tdf.get_tl(FILEPATH))
+                app_window["new_task"].update(value="")
             case _:
                 pass
     app_window.close()
