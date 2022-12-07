@@ -89,9 +89,8 @@ def gui_complete(app_filepath, cTask):
     """
     tasks = get_tl(app_filepath)
     idx = tasks.index(cTask)
-    print(F"In gui_complete; {idx}")
-    completed = tasks.pop(idx).strip("\n")
-    print(F"'{completed}' is done.")
+    tasks.pop(idx).strip("\n")
+    # print(F"'{completed}' is done.")
     write_tl(app_filepath, tasks)
 
 # if __name__ == '__main__':
