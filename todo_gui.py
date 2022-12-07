@@ -5,21 +5,23 @@ import PySimpleGUI as sg
 import time
 
 FILEPATH = "./data/tl.txt"
+ADDIMGPATH = "./img/add.png"
+COMPIMGPATH = "./img/complete.png"
 def window_setup():
     sg.theme('Kayak')
 
     win_font_style = ("Helvetica", 15)
     task_list_box = sg.Listbox(values=tdf.get_tl(FILEPATH), key = "-lb-",
-     enable_events=True, size=(50, 5))
+     enable_events=True, size=(57, 5))
     time_label = sg.Text("", key="clock")
 
     layout = [
         [sg.Titlebar(title="Simple ToDo App")],
         [time_label],
-        [sg.Text('Enter a new ToDo here: '),
-        sg.InputText(tooltip="Enter ToDo", key="new_task"), sg.Button("Add")],
+        [sg.Text('Enter a new ToDo here:'),
+        sg.InputText(tooltip="Enter ToDo", key="new_task", size=30), sg.Button(key="Add", image_source=ADDIMGPATH, image_size=(65, 25))],
         [task_list_box],
-        [sg.Button("Edit"), sg.Button("Complete"),sg.Exit()]
+        [sg.Button("Edit"), sg.Button(key="Complete", image_source=COMPIMGPATH, image_size=(65, 35)),sg.Exit()]
     ]
 
     window = sg.Window(
